@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    height:100vh;
+
+    background: linear-gradient(135deg, #8f0909, #061129, #ffffff);
+    background-size: 600% 600%;
+    animation: gradientAnimation 30s ease infinite;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+@keyframes gradientAnimation{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* CONTENEDOR PRINCIPAL */
+.dashboard {
+  width: 95%;
+  max-width: 1100px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(25px);
+
+  border-radius: 20px;
+  padding: 40px;
+
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+  color: #fff;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header img {
+  height: 90px;
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.header h1 {
+  margin-top: 12px;
+  font-size: 22px;
+}
+
+/* PROGRESO GENERAL */
+.progress-global p {
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 12px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 10px;
+  transition: 0.4s;
+}
+
+/* GRID */
+.modules {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+/* CARDS */
+.card {
+  background: rgba(0,0,0,0.4);
+  border-radius: 16px;
+  padding: 20px;
+
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* TITULO */
+.card h3 {
+  font-size: 16px;
+}
+
+/* ESTADO */
+.estado {
+  font-size: 13px;
+  margin-top: 6px;
+}
+
+/* BARRA */
+.bar {
+  height: 8px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.bar span {
+  height: 100%;
+  display: block;
+  background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+/* BOTONES */
+.btn {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 14px;
+
+  border-radius: 10px;
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* EVALUACION */
+.eval {
+  border: 2px dashed #facc15;
+  background: rgba(0,0,0,0.5);
+  text-align: center;
+}
+
+/* BOTON DESACTIVADO */
+.btn.disabled {
+  background: gray;
+  pointer-events: none;
+}
+
+/* LOGOUT */
+.logout {
+  margin-top: 25px;
+  display: inline-block;
+  background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.logout:hover {
+  transform: scale(1.05);
+}

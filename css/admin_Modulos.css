@@ -1,0 +1,142 @@
+/* ===== BODY ===== */
+body{
+    font-family:'Montserrat',sans-serif;
+    margin:0;
+
+    background: linear-gradient(135deg,#c40c0c,#111827,#ffffff);
+    background-size:600% 600%;
+    animation:grad 20s infinite;
+}
+
+@keyframes grad{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* ===== DASHBOARD ===== */
+.dashboard{
+    width:90%;
+    margin:auto;
+    padding:30px;
+}
+
+/* ===== HEADER ===== */
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
+}
+
+.menu{
+    position:relative;
+    cursor:pointer;
+}
+
+.dropdown{
+    display:none;
+    position:absolute;
+    right:0;
+    background:#020617;
+    border-radius:10px;
+}
+
+.dropdown a{
+    display:block;
+    padding:10px;
+    color:white;
+    text-decoration:none;
+}
+
+.dropdown a:hover{
+    background:#334155;
+}
+
+/* ===== CARDS ===== */
+.card{
+    background:rgba(255,255,255,0.12);
+    padding:20px;
+    margin-top:20px;
+    border-radius:15px;
+    color:white;
+}
+
+/* ===== INPUT ===== */
+input, select, textarea{
+    width:100%;
+    padding:10px;
+    border-radius:10px;
+    border:none;
+    margin-bottom:10px;
+}
+
+/* ===== BOTÓN ===== */
+.btn{
+    display:inline-block;
+    padding:10px 15px;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    border:none;
+    cursor:pointer;
+}
+
+/* ===== MÓDULOS ===== */
+.mod-list{
+    display:grid;
+    gap:12px;
+}
+
+.mod-card{
+    display:block;
+    padding:15px;
+    border-radius:12px;
+    background: linear-gradient(135deg,#1e293b,#020617);
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.mod-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.mod-title{
+    font-weight:600;
+}
+
+.mod-area{
+    font-size:13px;
+    color:#60a5fa;
+}
+
+/* ===== PAGINACIÓN ===== */
+.paginacion{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.paginacion a{
+    padding:10px 14px;
+    border-radius:8px;
+    background:white;
+    text-decoration:none;
+    font-weight:600;
+    color:#111827;
+    transition:0.3s;
+}
+
+.paginacion a:hover{
+    transform:translateY(-3px);
+}
+
+.activo-pagina{
+    background:#2563eb !important;
+    color:white !important;
+}
