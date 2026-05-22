@@ -246,8 +246,8 @@ $contenidos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
                         <textarea name="contenido" class="input-edit"
                             placeholder="Editar contenido (texto o link)"><?=
-                            ($c["tipo"] == "texto" || $c["tipo"] == "video") ? $c["contenido"] : ''
-                            ?></textarea>
+                        ($c["tipo"] == "texto" || $c["tipo"] == "video") ? $c["contenido"] : ''
+                        ?></textarea>
 
                         <input type="file" name="archivo" class="input-edit">
 
@@ -274,23 +274,7 @@ $contenidos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
 
     </div>
-<script>
-document.querySelectorAll('select[name="tipo"]').forEach(select => {
-    select.addEventListener('change', function () {
-        const form = this.closest('form');
-        const textarea = form.querySelector('textarea');
-        const fileInput = form.querySelector('input[type="file"]');
 
-        if (this.value === 'archivo') {
-            textarea.style.display = 'none';
-            fileInput.style.display = 'block';
-        } else {
-            textarea.style.display = 'block';
-            fileInput.style.display = 'none';
-        }
-    });
-});
-</script>
 </body>
 
 </html>
