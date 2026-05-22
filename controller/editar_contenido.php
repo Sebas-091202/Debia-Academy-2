@@ -1,36 +1,31 @@
 <?php
 require_once("../bd/conn.php");
 
+
 $id = $_POST["id"];
-$contenido = $_POST["contenido"] ?? null;
+$tipo = $_POST["tipo"];
+$contenido = $_POST["contenido"] ?? "";
 
-$ruta = null;
+// Si sube archivo
+if (!empty($_FILES["archivo"]["name"])) {
 
-/* ✅ SI ENVÍA ARCHIVO */
-if(isset($_FILES["archivo"]) && $_FILES["archivo"]["error"] == 0){
+    $ruta = "../uploads/";
+    $nombreArchivo = time() . "_" . $_FILES["archivo"]["name"];
+    $destino = $ruta . $nombreArchivo;
 
-    $nombre = time() . "_" . $_FILES["archivo"]["name"];
-    $ruta = "../uploads/" . $nombre;
+    move_uploaded_file($_FILES["archivo"]["tmp_name"], $destino);
 
-    move_uploaded_file($_FILES["archivo"]["tmp_name"], $ruta);
+    $contenido = $destino;
+    
 }
 
-/* ✅ DECIDIR QUÉ GUARDAR */
-
-if($ruta){
-    // Si subió archivo → reemplaza
-    $sql = "UPDATE contenidos SET contenido=:c WHERE id=:id";
-    $data = $ruta;
-} else {
-    // Si no → usa texto
-    $sql = "UPDATE contenidos SET contenido=:c WHERE id=:id";
-    $data = $contenido;
-}
-
-$stmt = $conn->prepare($sql);
+// UPDATE
+$stmt = $conn->prepare("UPDATE contenidos SET tipo=:tipo, contenido=:contenido WHERE id=:id");
 $stmt->execute([
-    ":c"=>$data,
-    ":id"=>$id
+    ":tipo" => $tipo,
+    ":contenido" => $contenido,
+    ":id" => $id
 ]);
+
 
 header("Location: ".$_SERVER['HTTP_REFERER']);

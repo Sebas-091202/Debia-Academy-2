@@ -16,7 +16,7 @@ header("Pragma: no-cache");
 
 $id_modulo = $_GET["id"] ?? 0;
 
-/* ✅ MODULO */
+/* MODULO */
 $stmt = $conn->prepare("SELECT * FROM modulos WHERE id=:id");
 $stmt->execute([":id" => $id_modulo]);
 $modulo = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -26,7 +26,7 @@ if (!$modulo) {
     exit;
 }
 
-/* ✅ CONTENIDOS */
+/* CONTENIDOS */
 $stmt2 = $conn->prepare("SELECT * FROM contenidos WHERE id_modulo=:id ORDER BY id ASC");
 $stmt2->execute([":id" => $id_modulo]);
 $contenidos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
@@ -233,6 +233,15 @@ $contenidos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
                         method="POST"
                         enctype="multipart/form-data">
 
+
+                        <!-- SELECT TIPO -->
+                        <select name="tipo" class="input-edit">
+                            <option value="texto" <?= $c["tipo"] == "texto" ? "selected" : "" ?>>Texto</option>
+                            <option value="video" <?= $c["tipo"] == "video" ? "selected" : "" ?>>Video</option>
+                            <option value="archivo" <?= $c["tipo"] == "archivo" ? "selected" : "" ?>>Archivo</option>
+                        </select>
+
+
                         <input type="hidden" name="id" value="<?= $c["id"] ?>">
 
                         <textarea name="contenido" class="input-edit"
@@ -265,7 +274,23 @@ $contenidos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
 
     </div>
+<script>
+document.querySelectorAll('select[name="tipo"]').forEach(select => {
+    select.addEventListener('change', function () {
+        const form = this.closest('form');
+        const textarea = form.querySelector('textarea');
+        const fileInput = form.querySelector('input[type="file"]');
 
+        if (this.value === 'archivo') {
+            textarea.style.display = 'none';
+            fileInput.style.display = 'block';
+        } else {
+            textarea.style.display = 'block';
+            fileInput.style.display = 'none';
+        }
+    });
+});
+</script>
 </body>
 
 </html>

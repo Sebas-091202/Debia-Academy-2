@@ -22,7 +22,7 @@ $id_usuario = $_SESSION["id"];
 $area = $_SESSION["area"];
 $id_modulo = $_GET["id"] ?? 1;
 
-/* ✅ VALIDAR MODULO */
+/* VALIDAR MODULO */
 $sql = "SELECT * FROM modulos WHERE id = :id AND area = :area";
 $stmt = $conn->prepare($sql);
 $stmt->execute([
@@ -37,13 +37,13 @@ if (!$modulo) {
     exit;
 }
 
-/* ✅ CONTENIDO */
+/* CONTENIDO */
 $sql2 = "SELECT * FROM contenidos WHERE id_modulo = :id ORDER BY id ASC";
 $stmt2 = $conn->prepare($sql2);
 $stmt2->execute([":id" => $id_modulo]);
 $contenidos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
-/* ✅ PROGRESO */
+/* PROGRESO */
 $sql3 = "SELECT porcentaje FROM progreso 
          WHERE id_usuario = :u AND id_modulo = :m";
 
