@@ -246,8 +246,8 @@ $contenidos = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
                         <textarea name="contenido" class="input-edit"
                             placeholder="Editar contenido (texto o link)"><?=
-                                                                            ($c["tipo"] == "texto" || $c["tipo"] == "video") ? $c["contenido"] : ''
-                                                                            ?></textarea>
+                            ($c["tipo"] == "texto" || $c["tipo"] == "video") ? $c["contenido"] : ''
+                            ?></textarea>
 
                         <input type="file" name="archivo" class="input-edit">
 
