@@ -1,111 +1,87 @@
-/* ===== BODY ===== */
 body{
     font-family:'Montserrat',sans-serif;
     margin:0;
-
     background: linear-gradient(135deg,#c40c0c,#111827,#ffffff);
     background-size:600% 600%;
     animation:grad 20s infinite;
 }
 
 @keyframes grad{
-    0%{background-position:0% 50%;}
+    0%,100%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
 }
 
-/* ===== DASHBOARD ===== */
 .dashboard{
     width:90%;
     margin:auto;
     padding:30px;
 }
 
-/* ===== HEADER ===== */
 .header{
     display:flex;
     justify-content:space-between;
     align-items:center;
     color:white;
-}
-
-.menu{
-    position:relative;
-    cursor:pointer;
-}
-
-.dropdown{
-    display:none;
-    position:absolute;
-    right:0;
-    background:#020617;
-    border-radius:10px;
-}
-
-.dropdown a{
-    display:block;
-    padding:10px;
-    color:white;
-    text-decoration:none;
-}
-
-.dropdown a:hover{
-    background:#334155;
-}
-
-/* ===== CARDS ===== */
-.card{
-    background:rgba(255,255,255,0.12);
-    padding:20px;
-    margin-top:20px;
-    border-radius:15px;
-    color:white;
-}
-
-/* ===== INPUT ===== */
-input, select, textarea{
-    width:100%;
-    padding:10px;
-    border-radius:10px;
-    border:none;
     margin-bottom:10px;
 }
 
-/* ===== BOTÓN ===== */
-.btn{
-    display:inline-block;
-    padding:10px 15px;
-    border-radius:8px;
-    background:#2563eb;
+/* MENSAJES */
+.alert{
+    margin:20px auto;
+    padding:12px;
+    max-width:600px;
+    text-align:center;
+    border-radius:10px;
+    font-weight:600;
+}
+
+.success{background:#16a34a;}
+.error{background:#dc2626;}
+
+/* CARDS */
+.card{
+    background:rgba(255,255,255,0.12);
+    padding:20px;
+    border-radius:15px;
+    margin-top:20px;
     color:white;
-    text-decoration:none;
+    backdrop-filter:blur(15px);
+}
+
+input,select,textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:10px;
     border:none;
+}
+
+.btn{
+    padding:10px;
+    background:#2563eb;
+    border:none;
+    border-radius:8px;
+    color:white;
     cursor:pointer;
 }
 
-/* ===== MÓDULOS ===== */
+/* MODULOS */
 .mod-list{
     display:grid;
     gap:12px;
 }
 
 .mod-card{
-    display:block;
     padding:15px;
     border-radius:12px;
-    background: linear-gradient(135deg,#1e293b,#020617);
+    background:linear-gradient(135deg,#1e293b,#020617);
     color:white;
     text-decoration:none;
-    transition:0.3s;
+    transition:.3s;
 }
 
 .mod-card:hover{
     transform:translateY(-4px);
-    box-shadow:0 10px 25px rgba(0,0,0,0.5);
-}
-
-.mod-title{
-    font-weight:600;
 }
 
 .mod-area{
@@ -113,30 +89,85 @@ input, select, textarea{
     color:#60a5fa;
 }
 
-/* ===== PAGINACIÓN ===== */
+/* PAGINACION */
 .paginacion{
     margin-top:20px;
     display:flex;
     justify-content:center;
     gap:8px;
-    flex-wrap:wrap;
 }
 
 .paginacion a{
-    padding:10px 14px;
-    border-radius:8px;
+    padding:10px;
     background:white;
+    border-radius:8px;
     text-decoration:none;
-    font-weight:600;
-    color:#111827;
-    transition:0.3s;
-}
-
-.paginacion a:hover{
-    transform:translateY(-3px);
+    color:black;
 }
 
 .activo-pagina{
     background:#2563eb !important;
     color:white !important;
+}
+
+
+/* ===== TOAST ===== */
+#toastContainer{
+    position:fixed;
+    top:20px;
+    right:20px;
+    z-index:9999;
+}
+
+.toast{
+    min-width:250px;
+    padding:14px 18px;
+    border-radius:12px;
+    margin-bottom:10px;
+    color:white;
+    font-weight:600;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
+
+    animation:slideIn .4s ease;
+}
+
+.toast.success{
+    background:linear-gradient(135deg,#16a34a,#22c55e);
+}
+
+.toast.error{
+    background:linear-gradient(135deg,#dc2626,#ef4444);
+}
+
+/* animación entrada */
+@keyframes slideIn{
+    from{
+        transform:translateX(120%);
+        opacity:0;
+    }
+    to{
+        transform:translateX(0);
+        opacity:1;
+    }
+}
+
+/* salida */
+.toast.hide{
+    animation:slideOut .4s ease forwards;
+}
+
+@keyframes slideOut{
+    from{
+        transform:translateX(0);
+        opacity:1;
+    }
+    to{
+        transform:translateX(120%);
+        opacity:0;
+    }
 }
